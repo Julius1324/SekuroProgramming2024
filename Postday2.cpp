@@ -9,6 +9,7 @@ void gerak(float x2,float y2,float* x,float* y){
     *x += x2;
     *y += y2;
 }
+
 int main(){
     bool game_on=true;
     float x=0;float y=0;
@@ -21,6 +22,7 @@ int main(){
 
         gerak(x1,x2,&x,&y);
         lokasi(x,y);
+        cout<<"selesai"<<endl;
     }
     
 
