@@ -29,17 +29,28 @@ void history(vector<float>& vectx, vector<float>& vecty){
     cout<<endl;
     cout<<"y: ";
     for (int i=0;i<vectx.size();i++){
-        cout<<vecty[i]<<" "<<endl;
+        cout<<vecty[i]<<" ";
     }
     cout<<endl;
 }
+void undo(int* index){
+    if (*index == 0){cout<<"Tidak dapat undo!"<<endl;}
+    else{*index -= 1;}
+}
+void redo(int* index,vector<float>& vectx){
+    if (*index==vectx.size()-1){cout<<"Tidak dapat redo!"<<endl;}
+    else{*index += 1;}
+}
+
+
+
 
 int main(){
     bool game_on=true;
     float x=0;float y=0;
     vector <float> x_history={0};
     vector <float> y_history={0};
-
+    int index = 0;
     cout<<"lokasi: lokasi()"<<endl;
     cout<<"gerak: geraj(x,y)"<<endl;
     cout<<"gerak_2: gerak_2(v,t,theta)"<<endl;
@@ -47,6 +58,8 @@ int main(){
     cout<<"Masukkan perintah"<<endl;
     while (game_on==true){
         string input;cin>>input;
+        x = x_history[index];
+        y = y_history[index];
         if (input=="lokasi"){
             lokasi(x,y);
         }
@@ -58,6 +71,7 @@ int main(){
             gerak(x2,y2,&x,&y);
             x_history.push_back(x);
             y_history.push_back(y);
+            index += 1;
         }
         if (input=="gerak_2"){
             float v;float t;float theta;
@@ -67,6 +81,7 @@ int main(){
             gerak_2(v,t,theta,&x,&y);
             x_history.push_back(x);
             y_history.push_back(y);
+            index += 1;
         }
         if (input=="exit"){
             break;
@@ -74,5 +89,12 @@ int main(){
         if (input=="history"){
             history(x_history,y_history);
         }
+        if (input=="undo"){
+            undo(&index);
+        }  
+        if (input=="redo"){
+            redo(&index,x_history);
+        }  
+
         }
 }
