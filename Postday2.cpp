@@ -41,7 +41,7 @@ void redo(int* index,vector<float>& vectx){
     if (*index==vectx.size()-1){cout<<"Tidak dapat redo!"<<endl;}
     else{*index += 1;}
 }
-
+void p_index(int* index){cout<<*index<<endl;}
 
 
 
@@ -69,9 +69,14 @@ int main(){
             cin>>x2>>y2;
             
             gerak(x2,y2,&x,&y);
+            x_history.resize(index+1);
+            y_history.resize(index+1);
+
             x_history.push_back(x);
             y_history.push_back(y);
+
             index += 1;
+            
         }
         if (input=="gerak_2"){
             float v;float t;float theta;
@@ -79,9 +84,13 @@ int main(){
             cin>>v>>t>>theta;
             
             gerak_2(v,t,theta,&x,&y);
+            index += 1;
+            x_history.resize(index+1);
+            y_history.resize(index+1);
             x_history.push_back(x);
             y_history.push_back(y);
-            index += 1;
+            
+            
         }
         if (input=="exit"){
             break;
@@ -95,6 +104,6 @@ int main(){
         if (input=="redo"){
             redo(&index,x_history);
         }  
-
+        if (input=="index"){p_index(&index);}
         }
 }
