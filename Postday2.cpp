@@ -23,8 +23,8 @@ void gerak(float x2,float y2,float* x,float* y, vector<float>& vectx, vector<flo
 }
 void gerak_2(float v, float t, float theta, float* x,float* y,vector<float>& vectx, vector<float>& vecty,int* index){
     float pi = 3.14159265359;
-    *x += v*sin((theta*pi)/180)*t;
-    *y += v*cos((theta*pi)/180)*t;
+    *x += v*cos((theta*pi)/180)*t;
+    *y += v*sin((theta*pi)/180)*t;
 
     //Memotong vector x dan vector y, dan membuang elemen jika berada diposisi setelah index
     vectx.resize(*index+1);
@@ -85,19 +85,20 @@ int main(){
         }
         if (input=="gerak"){
             float x2;float y2;
-            cout<<"x y"<<endl;
-            cin>>x2>>y2;
+            cout<<"x: ";cin>>x2; 
+            cout<<"y: ";cin>>y2;
             
             gerak(x2,y2,&x,&y,x_history,y_history,&index);
         }
         if (input=="gerak_2"){
             float v;float t;float theta;
-            cout<<"v t theta"<<endl;
-            cin>>v>>t>>theta;
-            
+            cout<<"v: ";cin>>v; 
+            cout<<"t: ";cin>>t;
+            cout<<"theta: ";cin>>theta;
+    
             gerak_2(v,t,theta,&x,&y,x_history,y_history,&index);
         }
-        if (input=="exit"){
+        if (input=="exit"){//Keluar dari program
             break;
         }
         if (input=="history"){
@@ -109,6 +110,6 @@ int main(){
         if (input=="redo"){
             redo(&index,x_history);
         }  
-        if (input=="index"){p_index(&index);}
+        if (input=="index"){p_index(&index);}   //Mencetak index saat ini
         }
 }
