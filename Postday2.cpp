@@ -72,6 +72,9 @@ int main(){
     cout<<"lokasi: lokasi()"<<endl;
     cout<<"gerak: geraj(x,y)"<<endl;
     cout<<"gerak_2: gerak_2(v,t,theta)"<<endl;
+    cout<<"history"<<endl;
+    cout<<"undo"<<endl;
+    cout<<"redo"<<endl;
     cout<<"exit: keluar dari program"<<endl;
     cout<<"Masukkan perintah"<<endl;
 
