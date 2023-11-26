@@ -7,6 +7,7 @@ int main(){
     v1.resize(8);
     for (auto i=v1.begin();i != v1.end();i++){
         cout<<*i;
+    cout<<"hello"<<endl;
     }
 }
 
