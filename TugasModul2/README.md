@@ -1,0 +1,4 @@
+Nama: Julius Arthur
+NIM: 19623074
+Fakultas: STEI-K
+Program ini merupakan simulasi drone. Simulasi dapat dilakukan dengan memasukkan perintah pada command line. Untuk mengetahui koordinat drone saat ini, user dapat memasukan perintah lokasi. Untuk menggerakan drone, bisa memasukkan perintah gerak dan gerak_2. Program akan meminta user memasukkan parameter yang sesuai dengan perintah yang dimasukkan satu per satu. Untuk mengetahui history perjalanan drone, dapat dilakukan dengan memasukkan history. Untuk melakukan undo atau redo terhadap pergerakan drone, dapat dilakukan dengan memasukkan perintah undo atau redo. Undo tidak dapat dilakukan jika drone berada pada paling awal history. Redo tidak dapat dilakukan saat drone berada pada paling akhir history atau menjalankan perintah gerak atau gerak_2, setelah melakukan undo. Untuk mengakhiri program, masukkan perintah exit.
