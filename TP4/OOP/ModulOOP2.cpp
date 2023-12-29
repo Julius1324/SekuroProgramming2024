@@ -83,14 +83,13 @@ Matrix Matrix::operator*(Matrix a){
 
 Swerve::Swerve(vector<vector<float>> vin){
     this->pers1_mat = Matrix(vin);
-    this->jarak = vin[0][2];
 }
 
 
 void Swerve::velocityCommands(float vxi, float vyi, float wi){
     vector<vector<float>> myv = {{vxi},{vyi},{wi}};
     Matrix pers2_mat =  Matrix(myv);
-    hasil = pers1_mat*pers2_mat;
+    Matrix hasil = pers1_mat*pers2_mat;
     v1x=hasil.v[0][0];
     v1y=hasil.v[1][0];
     v2x=hasil.v[2][0];
@@ -100,14 +99,21 @@ void Swerve::velocityCommands(float vxi, float vyi, float wi){
     v4x=hasil.v[6][0];
     v4y=hasil.v[7][0];
     v1 = sqrt((pow(v1x,2)+pow(v1y,2)));
-    cout<<"VelocityCom done"<<endl;
+    v2 = sqrt((pow(v2x,2)+pow(v2y,2)));
+    v3 = sqrt((pow(v3x,2)+pow(v3y,2)));
+    v4 = sqrt((pow(v4x,2)+pow(v4y,2)));
 }
 
-float Swerve::get_jarak(){
-    return jarak;}
+void Swerve::updatePose(float deltaTime,float vxi, float vyi, float wi){
+    vector<vector<float>> myv = {{vxi},{vyi},{wi}};
+    vector<vector<float>> mypose = {{x},{y},{teta}};
+    vector<vector<float>> myt ={{deltaTime}};
+    Matrix pose1(mypose);
+    Matrix t_mat(myt);
+    Matrix kec(myv);
+    Matrix hasil = pose1 + kec*t_mat;
 
-
-
-void Swerve::get_hasil(){
-    hasil.display();
+    x = hasil.v[0][0];
+    y = hasil.v[1][0];
+    teta = hasil.v[2][0];
 }

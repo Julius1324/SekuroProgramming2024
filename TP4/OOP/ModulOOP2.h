@@ -22,20 +22,14 @@ class Matrix{
 
 class Swerve{
     private:
-    float r1x,r1y,r2x,r2y,r3x,r3y,r4x,r4y;
-    float jarak;
-    float omega;
-    float vx,vy,w;
     Matrix pers1_mat;
-    Matrix hasil;
-
     public:
     float v1x,v1y,v2x,v2y,v3x,v3y,v4x,v4y;
     float v1,v2,v3,v4;
+    float x,y,teta;
     Swerve(vector<vector<float>> vin);
     void velocityCommands(float v_x, float v_y, float w1);
-    float get_jarak();
-    void get_hasil();
+    void updatePose(float deltaTime,float vxi, float vyi, float wi);
 };
 
 #endif
