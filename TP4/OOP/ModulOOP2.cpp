@@ -2,6 +2,8 @@
 #include <iostream>
 #include <math.h>
 
+Matrix::Matrix(){}
+
 Matrix::Matrix(vector<vector<float>> vin){
     this ->v=vin;
     this-> baris = vin.size();
@@ -77,21 +79,35 @@ Matrix Matrix::operator*(Matrix a){
     }
 }
 
+//SWERVE
 
-void Swerve::velocityCommand(float v_x, float v_y, float w1){
-    Matrix rumus1({{1,0,-r},{0,1,r},{1,0,-r},{0,1,r},{1,0,-r},{0,1,r},{1,0,-r},{0,1,r}});
-    Matrix rumus2({{v_x},{v_y},{w1}});
-    Matrix temp = rumus1 * rumus2;
-    this->v1x=temp.v[0][0];
-    this->v1y=temp.v[1][0];
-    this->v2x=temp.v[2][0];
-    this->v2y=temp.v[3][0];
-    this->v3x=temp.v[4][0];
-    this->v3y=temp.v[5][0];
-    this->v4x=temp.v[6][0];
-    this->v4y=temp.v[7][0];
-
-    this->v1 = sqrt(pow(v1x,2)+pow(v1y,2));
-    cout<<v1<<endl;
+Swerve::Swerve(vector<vector<float>> vin){
+    this->pers1_mat = Matrix(vin);
+    this->jarak = vin[0][2];
 }
-void Swerve::get_v1(){cout<<r<<" "<<v1y<<endl;}
+
+
+void Swerve::velocityCommands(float vxi, float vyi, float wi){
+    vector<vector<float>> myv = {{vxi},{vyi},{wi}};
+    Matrix pers2_mat =  Matrix(myv);
+    hasil = pers1_mat*pers2_mat;
+    v1x=hasil.v[0][0];
+    v1y=hasil.v[1][0];
+    v2x=hasil.v[2][0];
+    v2y=hasil.v[3][0];
+    v3x=hasil.v[4][0];
+    v3y=hasil.v[5][0];
+    v4x=hasil.v[6][0];
+    v4y=hasil.v[7][0];
+    v1 = sqrt((pow(v1x,2)+pow(v1y,2)));
+    cout<<"VelocityCom done"<<endl;
+}
+
+float Swerve::get_jarak(){
+    return jarak;}
+
+
+
+void Swerve::get_hasil(){
+    hasil.display();
+}
