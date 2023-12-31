@@ -1,8 +1,8 @@
 #include <iostream>
 #include "MOdulOOP/ModulOOP.h"
 #include <math.h>
-#include "pbPlots.hpp"
-#include "supportLib.hpp"
+#include "pbplots/pbPlots.hpp"
+#include "pbplots/supportLib.hpp"
 using namespace std;
 
 int main(){
